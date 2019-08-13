@@ -69,7 +69,7 @@ Slovo relační označuje vztah (anglicky relation). Ten je mezi tabulkami nebo 
 * Vyuziti zprehledneni rozsahlych tabulek
 
 <div align="center">
-    <img src="../images/databaze/vazba1_1.png" alt="Ukazka tabulky" width="95%">
+    <img src="images/databaze/vazba1_1.png" alt="Ukazka tabulky" width="95%">
 </div>
 
 **Relace 1:n**
@@ -78,7 +78,7 @@ Slovo relační označuje vztah (anglicky relation). Ten je mezi tabulkami nebo 
 * Nejpouzivanejsi typ relace
 
 <div align="center">
-    <img src="../images/databaze/vazba1_n.png" alt="Ukazka tabulky" width="95%">
+    <img src="images/databaze/vazba1_n.png" alt="Ukazka tabulky" width="95%">
 </div><br>
 
 **Relace m:n**
@@ -87,7 +87,7 @@ Slovo relační označuje vztah (anglicky relation). Ten je mezi tabulkami nebo 
 * Pres vazebni tabulku tabulky propojime a vytvorime relaci m:n.
 
 <div align="center">
-    <img src="../images/databaze/vazbaM_n.png" alt="Ukazka tabulky" width="95%">
+    <img src="images/databaze/vazbaM_n.png" alt="Ukazka tabulky" width="95%">
 </div>
 
 ## Zakladni datove typy
