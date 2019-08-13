@@ -21,7 +21,7 @@ Položky (konkrétně zde uživatelé) ukládáme na jednotlivé řádky, sloupc
 
 Slovo relační označuje vztah (anglicky relation). Ten je mezi tabulkami nebo mezi entitami v jedné tabulce. To si ale necháme na jindy a zatím budeme pracovat jen s jednou tabulkou zároveň.
 
-**V bodech**
+**V bodech:**
 * Zakladem relacni databaze je tabulka ve ktere jsou ulozena data
 * Tabulek muze byt v databazi nekolik a tyto tabulky mohou byt na sobe urcitym zpusobem zavisle -> existuje mezi nimi vazba (relace)
 * Kazda tabulka se sklada ze sloupcu a radku 
@@ -154,7 +154,7 @@ V dalších letech se ukázalo, že SQL-86 obsahuje některé nedostatky a naopa
 Standardy podporuje prakticky každá relační databáze, ale obvykle nejsou implementovány vždy všechny požadavky normy. A naopak, každá z nich obsahuje prvky a konstrukce, které nejsou ve standardech obsaženy. Přenositelnost SQL dotazů mezi jednotlivými databázemi je proto omezená.
 
 
-** Prikazy pro definici dat**
+**Prikazy pro definici dat**
 ```SQL
 -- Vytvoreni tabulky
 	CREATE TABLE [dbo].[Uzivatele]
