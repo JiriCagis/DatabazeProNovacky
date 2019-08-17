@@ -147,11 +147,10 @@ order by year asc
 
 -- Task 10
 -- Display countries and number of locations in that country.
-
-select countries.country_name, group_table.number_of_locations
+select countries.country_name, group_table.count_of_locations
 from 
     (
-        select country_id,count(*) as number_of_locations
+        select country_id,count(*) as count_of_locations
         from hr.locations
         group by country_id
     ) group_table
