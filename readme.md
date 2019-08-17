@@ -14,7 +14,7 @@ Relační databáze je založena na tabulkách. Každá tabulka obsahuje položk
 Databázovou tabulku si můžeme představit třeba jako tabulku v Excelu. Tabulka uživatelé by mohla vypadat takto:
 
 <div aling="center">
-		<img src="images/databaze/ukazkaTabulky.png" alt="Ukazka tabulky" width="80%">
+	<img src="images/databaze/ukazkaTabulky.png" alt="Ukazka tabulky" width="80%">
 </div>
 
 Položky (konkrétně zde uživatelé) ukládáme na jednotlivé řádky, sloupce pak označují atributy (vlastnosti, chcete-li), které položky mají. MS-SQL databáze je typovaná, to znamená, že každý sloupec má pevně stanovený datový typ (číslo, znak, krátký text, dlouhý text...) a může obsahovat hodnoty jen tohoto typu. Pokud chceme s relační databází rozumně pracovat, každý řádek v tabulce by měl být opatřený unikátním identifikátorem. U uživatelů by to mohlo být třeba rodné číslo, mnohem častěji se však používají identifikátory umělé a to tak, že uživatele prostě očíslujeme. K tomu se dostaneme později.
