@@ -6,7 +6,7 @@ select emp1.employee_id as manager_number, job_id, last_name,
 (
 	select count(*)
 	from hr.employees emp2
-	where manager_id = emp1.employee_id
+	where emp2.manager_id = emp1.employee_id
 ) as count_employess
 from hr.employees emp1
 where job_id like '%_M%'
