@@ -1,147 +1,144 @@
-# Uvod do databazi
+# Úvod do databází
 
-## Co to je databaze?
-* Misto pro ukladani dat 
-* Odborne databaze stavi na dvou pojmech SRBD(System rizeni baze dat), ktery definuje jak pracovat s daty, a DB(Baze dat) predstavujici data samotna
-* Nejcasteji pouzivane databaze jsou relacni databaze
-* Databazove systemy: MySql, MS SQL server, Oracle
-* Vsechny relacni databaze maji spolecne, ze pro vyhledavani a praci s daty pouzivaji jazyk SQL
-* Prikladem muze byt kartoteka ve ktere jsou data ulozena pomoci urciteho systemu nejcasteji podle jmena data narozeni
+## Co je to databáze?
+* Místo pro ukládání dat
+* Odborné databáze staví na dvou pojmech SRBD(system řízení báze dat), který definuje jak pracovat s daty, a DB(Báze dat) představující data samotná
+* Nejčastěji používané databáze jsou relační databáze
+* Databázove systémy: MySql, MS SQL server, Oracle
+* Všechny relační databáze mají společné, že pro vyhledávání a práci s daty používají jazyk SQL
+* Příkladem může být kartotéka ve které jsou data uložena pomocí určitého systému nejčastěji podle jména a data narození
 
 
-## Relacni databaze
-Relacni databáze je založena na tabulkách. Každá tabulka obsahuje položky jednoho typu. Můžeme mít tedy tabulku uzivatele, další tabulku clanky a další třeba komentare.
-Databázovou tabulku si můžeme představit třeba jako tabulku v Excelu. Tabulka uzivatele by mohla vypadat asi takto:
+## Relační databáze
+Relační databáze je založena na tabulkách. Každá tabulka obsahuje položky jednoho typu. Můžeme mít tedy tabulku uživatele, další tabulku články a další třeba komentáře.
+Databázovou tabulku si můžeme představit třeba jako tabulku v Excelu. Tabulka uživatelé by mohla vypadat takto:
 
-<div align="center">
-      <img src="images/databaze/ukazkaTabulky.png" alt="Ukazka tabulky" width="80%">
+<div aling="center">
+		<img src="images/databaze/ukazkaTabulky.png" alt="Ukazka tabulky" width="80%">
 </div>
-  
+
 Položky (konkrétně zde uživatelé) ukládáme na jednotlivé řádky, sloupce pak označují atributy (vlastnosti, chcete-li), které položky mají. MS-SQL databáze je typovaná, to znamená, že každý sloupec má pevně stanovený datový typ (číslo, znak, krátký text, dlouhý text...) a může obsahovat hodnoty jen tohoto typu. Pokud chceme s relační databází rozumně pracovat, každý řádek v tabulce by měl být opatřený unikátním identifikátorem. U uživatelů by to mohlo být třeba rodné číslo, mnohem častěji se však používají identifikátory umělé a to tak, že uživatele prostě očíslujeme. K tomu se dostaneme později.
 
 Slovo relační označuje vztah (anglicky relation). Ten je mezi tabulkami nebo mezi entitami v jedné tabulce. To si ale necháme na jindy a zatím budeme pracovat jen s jednou tabulkou zároveň.
 
 **V bodech:**
-* Zakladem relacni databaze je tabulka ve ktere jsou ulozena data
-* Tabulek muze byt v databazi nekolik a tyto tabulky mohou byt na sobe urcitym zpusobem zavisle -> existuje mezi nimi vazba (relace)
-* Kazda tabulka se sklada ze sloupcu a radku 
+* Základem relační databáze je tabulka ve které jsou uložena data
+* Tabulek může být v databázi několik a tyto vazby mohou být na sobě určitým způsobem závislé -> existuje mezi nimi vazba (relace)
+* Každá tabulka se skladá ze sloupců a rádků
 
-## Zakladni pojmy relacnich databazi
+
+## Základní pojmy relačních databází
 **Tabulka**
-* Zakladni databazovy objekt, ktery slouzi k ukladani dat do pametoveho prostoru relacni databaze.
-* Databázovou tabulku si lze představit jako běžnou dvourozměrnou tabulku, která má pevně daný počet a význam jednotlivých položek, které tvoří sloupce tabulky.
-  
+* Základní databázový objekt, který slouží k ukládání dat do paměťového prostoru relační databáze.
+* Databázovou tabulku si můžeme představit jako jako běžnou dvourozměrnou tabulku, která má pevně daný počet a význam jednotlivých položek, které tvoří sloupce tabulky.
 
 **Sloupec**
-* Sloupce predstavuji atributy napr. jmeno, prijmeni, mesto..
-* Kazdy sloupec ma definovany urcity datovy typ (cislo, text, datum, logicka hodnota) a integritni omezeni (musi byt vyplnen, pouze kladne cisla, atd.)
+* Sloupce představujíatributy např. jméno, příjmení, město...
+* Každý sloupec má definovaný určitý datový typ (číslo, text, datum, logická hodnota) a integritní omezení (musí být vyplněn, pouze kladné čísla, atd.)
 
-**Radek**
-* Reprezentuje jeden zaznam v tabulce
-* Napriklad v tabulce Uzivatele predstavuje jeden radek jednoho uzivatele
+**Řádek**
+* Reprezentuje jeden záznam v tabulce.
+* Například v tabulce Uživatelé představuje jeden řádek jednoho uživatele.
 
-**Primarni klic**
-* Jednoznacny identifikator zaznamu(radku v tabulce)
-* Muze se jednat o jeden sloupec nebo kombinaci nekolika sloupcu (slozeny klic)
-* Umely klic: pridany dalsi atribut id do tabulky, ktery identifikuje jednotlive radky, pri pridavani novych zaznamu se automaticky inkrementuje na vyssi hodnotu
+**Primární klíč**
+* Jednoznačný identifikátor záznamu(rádku v taulce)
+* Slouží pro vytváření vztahu mezi tabulkami, umožní nám identifikovat, které záznamy patří k danému klíči v druhé tabuce
 
-
-**Cizi klic**
-* Identifikator zaznamu v druhe tabulce
-* Slouzi pro vytvareni vztahu mezi tabulkami, umozni nam identifikovat ktere zaznamy patri k datemu klici v druhe tabulce
-
+**Cizí klíč**
+* Identifikátor záznamu v druhé tabulce
+* Slouží pro vytváření vztahu mezi tabulkami, umožní nám identifikovat, které záznamy patří k danému klíči v druhé tabulce.
 
 **Index**
-* Databázové indexy slouží ke zrychlení přístupu k datům a měly by se používat u všech sloupců, podle kterých se vyhledává, třídí nebo podle kterých se spojují tabulky.
+* Databázové indexy složí ke zrychlení přístupu k datům a měly by se používat u všech sloupců, podle kterých se vyhledává, třídí nebo podle kterých se spojují tabulky.
 * Při ukládání dat do tabulek nejsou záznamy obvykle nijak tříděny a ukládají se většinou za sebe tak, jak byly postupně vloženy.
-* Index umoznuje rychlejsi vyhledavani, diky serazeni dat do stromove struktury.
+* Index umožňuje rychlejší vyhledávání, díky seřazení dat do stromové struktury.
+
 
 ## Vazby mezi tabulkami
 
 **Co je to relace?**
-* Nektere tabulky mohou byt na sobe zavisle, existuje mezi nimi urcita vazba, ktere se rika relace.
-* Prikladem muze byt tabulka Kontakty, ktera je zavisla na tabulce Uzivatele.
-* V relacnich databazich mame tri druhy relaci.
+* Nškteré tabulky mohou být na sobě závislé, existuje mezi nimi určitá vazba, které se říká relace.
+* Příkladem může být tabulka Kontakty, která je závislá na tabulce Uživatelé.
+* V relačních databázích máme tři druhy relací.
 
 **Relace 1:1**
-* Relace kdy jeden zaznam odpovida prave jednomu zaznamu z jine databazove tabulky
-* Nejjednodusi relace
-* Vyuziti zprehledneni rozsahlych tabulek
+* Relace kdy jeden záznam v tabulce odpovídá právě jednomu záznamu z jiné databázové tabulky.
+* Nejjednodušší relace
+* Využití pro zpřehlednění rozsáhlých tabulek
 
 <div align="center">
     <img src="images/databaze/vazba1_1.png" alt="Ukazka tabulky" width="95%">
 </div>
 
 **Relace 1:n**
-* Relace prirazuje jednomu zaznamu vice zaznamu z jine tabulky
-* Jednu tabulku tak propojime pomoci ciziho s primarnim klicem druhe tabulky
-* Nejpouzivanejsi typ relace
+* Relace přiřazuje jednomu záznamu z tabulky více záznamů z jiné tabulky.
+* Jednu tabulku ta propojíme pomocí cizího klíče s primárním klíčem druhé tabulky
+* Nejpoužívanější tym relace¨.
 
 <div align="center">
     <img src="images/databaze/vazba1_n.png" alt="Ukazka tabulky" width="95%">
 </div><br>
 
 **Relace m:n**
-* Relace se pouziva mezi dvema tabulkami kde vice zaznamu z jedne tabulky muze odpovidat vice zaznamum z tabulky druhe.
-* Slozitejsi relace, pro jeji provedeni je treba zavest novou tabulku (vazebni).
-* Pres vazebni tabulku tabulky propojime a vytvorime relaci m:n.
+* Relace se používá mezi dvěma tabulkami kde více záznamu z jedné tabulky může odpovídat více záznamům z tabulky druhé.
+* Složitější relace, pro její provedení je třeba zavést novou tabulku (vazební).
+* Přes vazební tabulku tabulky propojíme a vytvoříme relaci m:n.
 
 <div align="center">
     <img src="images/databaze/vazbaM_n.png" alt="Ukazka tabulky" width="95%">
 </div>
 
-## Zakladni datove typy
-**K cemu slouzi?**
-* Kazdy sloupec v tabulce ma datovy typ, ten definuje jaka data muzeme do tohoto sloupce ukladat.
+
+## Základní datové typy
+**K čemu slouží?**
+* Každý sloupec v tabulce má datový typ, ten definuje jaká data můžeme do tohoto slupce ukládat.
+
+**Číselné datové typy**
+* INT - bežná celá čísla
+* BIGINT - velká celá čísla
+* FLOAT - malá čísla v pohyblivé řadové čárce
+* DOUBLE - velká čísla v pohyblivé řadové čárce
 
 
-**Ciselne datove typy**
-* INT - bezna cela cisla
-* BIGINT - velka cela cisla
-* FLOAT - mala cisla vv pohyblive radove carce
-* DOUBLE - velka cisla v pohyblive radove carce
+Poznámka: Každý výše zmíněný datový typ má definovaný rozsah, který záelží na implementaci databáze.
+Poznámka: Pokud nepotřebujeme záporné hodnoty můžeme použít datový typ UNSIGNED, který zamezí používání záporných hodnot a u cceločísellných typů zdvojnásobí rozsah kladných hodnot.
 
+**Řetězcové datové typy**
+* CHAR - řetězec pevně dané délky do 255 znaků
+* VARCHAR - řetězec proměnné délky do 255 znaků
+* TEXT - řetězec schopný uložit dlouhý text větší než 255 znaků
 
-Poznamka: Kazdy vyse zmineny datovy typ ma definovany rozsah, ktery zalezi na implementaci databaze.
-Poznamka: Pokud nepotrebujeme zaporne hodnoty muzeme pouzit datovy typ UNSIGNED jenz zamezi pouzivani zapornych hodnot a u celocislelnych typu zdvojnasobi rozsah kladnych hodnot.
-
-
-**Retezcove datove typy**
-* CHAR - retezec pevne dane delky do 255 znaku
-* VARCHAR - retezec promenne delky do 255 znaku
-* TEXT - retezec schopny ulozit dlouhy text vetsi nez 255 znaku
-
-**Datum a cas**
-* DATE - slouzi pro ulozeni datumu ve formatu YYYY-MM-DD
-* TIME - cas ve formatu hh:mm:ss
-* DATETIME - datum s casem ve formatu YYYY-MM-DD hh:mm:ss
+**Datum a čas**
+* DATE - slouží pro uložení datumu ve formátu YYYY-MM-DD
+* TIME - čas ve formátu hh:mm:ss
+* DATETIME - datum s časem ve formátu YYYY-MM-DD hh:mm:ss
 
 **Hodnota NULL**
-* Jestlize se ve sloupci zaznamu nachazi hodnota NULL, znamena to, ze v nem nic neni
-* Tato hodnota znamena nezadano nebo neznamo
+* jestliže se ve soupci zaznamu nachází hodnota NULL, znamená to, že v něm nic není
+* Tato hodnota znamená nezadáno nebo neznámo
 
-## Normalizace relacnich databazi
+
+## Nozmalizace relačních databází
 **Co to je?**
-* Postup popisujici jak spravne navrhnout a vytvorit strukturu databaze
-* Databaze by mela vyhovovat tzv. normalnim formam
-* Normalni formy urcuji jak navrhnout tabulky, tak aby nedoslo k duplicitam a nekonzistentnim datum
-* Existuje nekolik normalnich forem, bezne se  vyzaduje dodrzeni prvnich tri
+* Postup popisující jak správně navrhnout a vytvořit strukturu databáze.
+* Databáze by měla vyhovovat tzv. normálním formám
+* Normální formy určují jak navrhnout tabulky, tak aby nedošlo k duplicitám a nekonzistentním datům.
+* Existuje několik normálních forem, běžně se vyžaduje dodržení alespoň prvních tří.
 
-**Prvni normalni forma**: Tabulka je v pvni normalni forme, pokud kazdy jeji atribut obsahuje jen atomicke hodnoty
+**První normální forma**: Tabulka je v pvní normální formě, pokud každý její atribut obsahuje jen atomicke hodnoty
 
+**Druhá normální forma**: Tabulka je v druhé normální formě, pokud splňuje podmínky první normální formy akaždý neklíčový atribut je plně závislý na celém primárním klíči(nejen na jeho části)
 
-**Druha normalni forma**: Tabulka je v druhe normalni forme, pokud splnuje podminky prvni normalni formy kazdy neklicovy atribut je plne zavisly na celem primarnim klici (nejen na jeho casti)
-
-**Treti normalni forma**: Tabulka se nachazi ve treti normalni forme, splnuje-li predchozi dve normalni formy a vsechny neklicove atributy jsou vzajemne nezavisle
+**Třetí norální forma**: Tabulka se nachází v třetí normální formě, splňuje-li předchozí dvě normální formy a všechny neklíčové atributy jsou vzájemně nezávislé
 
 
 ## Jazyk SQL
 **Co to je?**
-* Dotazovaci jazyk urceny pro praci s daty v relacnich databazich
-* V prekladu z anglictiny Structured Query Language
-* Jinak receno je to jazyk umoznujici komunikovat s databazi jednoduchou anglictinou
+* Dotazovací jazyk určený pro práci s daty v relačních databázích
+* Anglicky Structured Query Language
+* Jinak řečeno je to jazyk umožňující komunikovat s databázi jednoduchou angličtinou
 
-**Okenko do historie**
+**Okénko do historie**
 
 V 70. letech 20. století probíhal ve firmě IBM výzkum relačních databází. Bylo nutné vytvořit sadu příkazů pro ovládání těchto databází. Vznikl tak jazyk SEQUEL (Structured English Query Language). Cílem bylo vytvořit jazyk, ve kterém by se příkazy tvořily syntakticky co nejblíže přirozenému jazyku (angličtině).
 
@@ -153,8 +150,7 @@ V dalších letech se ukázalo, že SQL-86 obsahuje některé nedostatky a naopa
 
 Standardy podporuje prakticky každá relační databáze, ale obvykle nejsou implementovány vždy všechny požadavky normy. A naopak, každá z nich obsahuje prvky a konstrukce, které nejsou ve standardech obsaženy. Přenositelnost SQL dotazů mezi jednotlivými databázemi je proto omezená.
 
-
-**Prikazy pro definici dat**
+**Příkazy pro definici dat**
 ```SQL
 -- Vytvoreni tabulky
 	CREATE TABLE [dbo].[Uzivatele]
@@ -169,8 +165,7 @@ Standardy podporuje prakticky každá relační databáze, ale obvykle nejsou im
 -- Smazani tabulky
 DROP TABLE [dbo].[Uzivatele]
 ```
-
-**Prikazy pro vkladani a mazani dat v tabulce**
+**Příkazy pro vkládání a mazání dat v tabulce**
 ```SQL
 -- Vlozeni zaznamu do tabulky
 	INSERT INTO [Uzivatele] (
@@ -191,7 +186,6 @@ DROP TABLE [dbo].[Uzivatele]
 		[PocetClanku] = [PocetClanku] + 1 
 	WHERE [Id] = 1;
 ```
-
 **Dotazy nad tabulkou**
 ```SQL
 -- Vypsání komentářů napsaných v druhém kvartálu roku 2012, seřazených podle data
@@ -267,11 +261,10 @@ DROP TABLE [dbo].[Uzivatele]
 	WHERE (c.PrettyURL = 'cheese-mouse-oddechova-plosinovka')
 	ORDER BY k.Datum DESC;
 ```
-
-------------------------------
+---------------------------------
 **Reference**
 * [Kurz relačních databází - Distancne.cz](https://www.distancne.cz/kurz/relacni-databaze-a-dotazovaci-jazyk-sql)
 * [SQL Tutorial- w3schools.com](https://www.w3schools.com/sql/)
 * [SQL v příkladech - itnetwork.cz](https://www.itnetwork.cz/csharp/databaze/ms-sql-databaze-dotazy-v-prikladech)
-* [Relační databáze - Wikipedie.cz](https://cs.wikipedia.org/wiki/Relačn%C3%AD_databáze)
+* [Relační databáze - Wikipedie.cz](https://cs.wikipedia.org/wiki/Relační_databáze)
 * [Využití databázových indexů - Root.cz](https://www.root.cz/clanky/vyuziti-databazovych-indexu/)
