@@ -1,7 +1,8 @@
--- Exercise 4
+--Sada 4
 
--- Task 1
+-- Task 4.1
 -- Show last names and numbers of all managers together with the number of employees that are his / her subortinates.
+
 select emp1.employee_id as manager_number, job_id, last_name,
 (
 	select count(*)
@@ -12,10 +13,9 @@ from hr.employees emp1
 where job_id like '%_M%'
 
 
+-- Task 4.2
+-- Create a report that displays the department name, location name, job title and salary of those employeses who work in a specific (given) location.
 
--- Task 2
--- Create a report that displays the department name, location name, job title and salary of those employeses who work
--- in a specific (given) location.
 select 	department_name, 
 		(street_address||', '||postal_code||', '||city||', '||state_province||', '||country_name||', '||region_name) as location_name, 
 		job_title, 
@@ -27,43 +27,38 @@ from hr.employees emp
 	left join hr.countries cou on loc.country_id = cou.country_id
 	left join hr.regions reg on cou.region_id = reg.region_id;
 
-
-
--- Task 3
+-- Task 4.3
 -- Find the number of employees who have a last name that ends with the letter n.
+
 select count(*)
 from hr.employees
 where last_name like '%n';
 
+-- Task 4.4
+-- Create a report that shows the name, location and the number of employees for each department.
+-- Make sure that report also includes departments without employees.
 
-
--- Task 4
--- Create a report that shows the name, location and the number of employees for each department. Make sure that
--- report also includes departments without employees.
 select  dep.department_name, 
         (loc.street_address || ' ' || loc.city) as location,
         (   
             select count(*)
             from hr.employees emp
             where emp.department_id = dep.department_id
-        ) as count_employess
+        ) as count_employees
 from hr.departments dep
     left join hr.locations loc on dep.location_id = loc.location_id
-order by count_employess;
+order by count_employees;
 
+-- Task 4.5
+-- Show all employees who were hired in the first half of the month (before the 16)
 
-
--- Task 5
--- Show all employees who were hired in the first half of the month (before the 16
 select employee_id, first_name, last_name,hire_date
 from hr.employees
 where extract(day from hire_date) < 16
 
+-- Task 4.6
+-- Create a report to display the department number and lowest salary of the department with the highest and average salary.
 
-
--- Task 6
--- Create a report to display the department number and lowest salary of the department with the highest average
--- salary.
 select  dep.department_id, 
         dep.department_name,
         (
@@ -75,14 +70,19 @@ select  dep.department_id,
             select max(salary)
             from hr.employees emp
             where emp.department_id = dep.department_id
-        ) as highest_salary
+        ) as highest_salary,
+        (
+            select avg(salary)
+            from hr.employees emp
+            where emp.department_id = dep.department_id
+        ) as averange_salary
 from hr.departments dep
 
 
+-- Task 4.7
+-- Create a report that displays department where no sales representatives work.
+-- Include the department number, department name and location in the output.
 
--- Task 7
--- Create a report that displays department where no sales representatives work. Include the deprtment number,
--- department name and location in the output.
 select  dep.department_id, 
         dep.department_name,
         (loc.street_address || ' ' || loc.city) as location
@@ -94,14 +94,14 @@ where not exists
         from hr.employees emp
         where dep.department_id = emp.department_id and emp.job_id = 'SA_MAN'
      )
-
-
-
--- Task 8
+     
+     
+-- Task 4.8
 -- Display the depatrment number, department name and the number of employees for the department:
 -- a. with the highest number of employees.
 -- b. with the lowest number of employees
 -- c. that employs fewer than three employees.
+
 select department_id,count_employees, 'department_with_the_highest_number_of_employees' as description
 from 
 (
@@ -134,9 +134,9 @@ from
 order by description
 
 
-
--- Task 9
+-- Task 4.9
 -- Display years and total numbers of employees that were employed in that year.
+
 select  extract(year from hire_date) as year, 
         count(*) as count_hired_employees
 from hr.employees
@@ -144,9 +144,9 @@ group by extract(year from hire_date)
 order by year asc
 
 
-
 -- Task 10
 -- Display countries and number of locations in that country.
+
 select countries.country_name, group_table.count_of_locations
 from 
     (
