@@ -2,15 +2,15 @@
 
 ## Co je to databáze?
 * Místo pro ukládání dat
-* Odborné databáze staví na dvou pojmech SRBD(system řízení báze dat), který definuje jak pracovat s daty, a DB(Báze dat) představující data samotná
+* Odborné databáze staví na dvou pojmech SRBD(systém řízení báze dat), který definuje jak pracovat s daty, a DB(Báze dat) představující data samotná
 * Nejčastěji používané databáze jsou relační databáze
-* Databázove systémy: MySql, MS SQL server, Oracle
+* Databázové systémy: MySql, MS SQL server, Oracle
 * Všechny relační databáze mají společné, že pro vyhledávání a práci s daty používají jazyk SQL
 * Příkladem může být kartotéka ve které jsou data uložena pomocí určitého systému nejčastěji podle jména a data narození
 
 
 ## Relační databáze
-Relační databáze je založena na tabulkách. Každá tabulka obsahuje položky jednoho typu. Můžeme mít tedy tabulku uživatele, další tabulku články a další třeba komentáře.
+Relační databáze je založena na tabulkách. Každá tabulka obsahuje položky jednoho typu. Můžeme mít tedy tabulku Uživatelé, další tabulku Články a další třeba Komentáře.
 Databázovou tabulku si můžeme představit třeba jako tabulku v Excelu. Tabulka uživatelé by mohla vypadat takto:
 
 <div aling="center">
@@ -33,7 +33,7 @@ Slovo relační označuje vztah (anglicky relation). Ten je mezi tabulkami nebo 
 * Databázovou tabulku si můžeme představit jako jako běžnou dvourozměrnou tabulku, která má pevně daný počet a význam jednotlivých položek, které tvoří sloupce tabulky.
 
 **Sloupec**
-* Sloupce představujíatributy např. jméno, příjmení, město...
+* Sloupce představují atributy např. jméno, příjmení, město...
 * Každý sloupec má definovaný určitý datový typ (číslo, text, datum, logická hodnota) a integritní omezení (musí být vyplněn, pouze kladné čísla, atd.)
 
 **Řádek**
@@ -41,8 +41,8 @@ Slovo relační označuje vztah (anglicky relation). Ten je mezi tabulkami nebo 
 * Například v tabulce Uživatelé představuje jeden řádek jednoho uživatele.
 
 **Primární klíč**
-* Jednoznačný identifikátor záznamu(rádku v taulce)
-* Slouží pro vytváření vztahu mezi tabulkami, umožní nám identifikovat, které záznamy patří k danému klíči v druhé tabuce
+* Jednoznačný identifikátor záznamu(řádku v tabulce).
+* Slouží pro vytváření vztahu mezi tabulkami, umožní nám identifikovat, které záznamy patří k danému klíči v druhé tabulce.
 
 **Cizí klíč**
 * Identifikátor záznamu v druhé tabulce
@@ -57,7 +57,7 @@ Slovo relační označuje vztah (anglicky relation). Ten je mezi tabulkami nebo 
 ## Vazby mezi tabulkami
 
 **Co je to relace?**
-* Nškteré tabulky mohou být na sobě závislé, existuje mezi nimi určitá vazba, které se říká relace.
+* Některé tabulky mohou být na sobě závislé, existuje mezi nimi určitá vazba, které se říká relace.
 * Příkladem může být tabulka Kontakty, která je závislá na tabulce Uživatelé.
 * V relačních databázích máme tři druhy relací.
 
@@ -72,15 +72,15 @@ Slovo relační označuje vztah (anglicky relation). Ten je mezi tabulkami nebo 
 
 **Relace 1:n**
 * Relace přiřazuje jednomu záznamu z tabulky více záznamů z jiné tabulky.
-* Jednu tabulku ta propojíme pomocí cizího klíče s primárním klíčem druhé tabulky
-* Nejpoužívanější tym relace¨.
+* Jednu tabulku tak propojíme pomocí cizího klíče s primárním klíčem druhé tabulky.
+* Nejpoužívanější typ relace.
 
 <div align="center">
     <img src="images/databaze/vazba1_n.png" alt="Ukazka tabulky" width="95%">
 </div><br>
 
 **Relace m:n**
-* Relace se používá mezi dvěma tabulkami kde více záznamu z jedné tabulky může odpovídat více záznamům z tabulky druhé.
+* Relace se používá mezi dvěma tabulkami, kde více záznamu z jedné tabulky může odpovídat více záznamům z tabulky druhé.
 * Složitější relace, pro její provedení je třeba zavést novou tabulku (vazební).
 * Přes vazební tabulku tabulky propojíme a vytvoříme relaci m:n.
 
@@ -100,8 +100,9 @@ Slovo relační označuje vztah (anglicky relation). Ten je mezi tabulkami nebo 
 * DOUBLE - velká čísla v pohyblivé řadové čárce
 
 
-Poznámka: Každý výše zmíněný datový typ má definovaný rozsah, který záelží na implementaci databáze.
-Poznámka: Pokud nepotřebujeme záporné hodnoty můžeme použít datový typ UNSIGNED, který zamezí používání záporných hodnot a u cceločísellných typů zdvojnásobí rozsah kladných hodnot.
+Poznámka: Každý výše zmíněný datový typ má definovaný rozsah, který záleží na implementaci databáze.
+
+Poznámka: Pokud nepotřebujeme záporné hodnoty můžeme použít datový typ UNSIGNED, který zamezí používání záporných hodnot a u celočíselných typů zdvojnásobí rozsah kladných hodnot.
 
 **Řetězcové datové typy**
 * CHAR - řetězec pevně dané délky do 255 znaků
@@ -114,22 +115,22 @@ Poznámka: Pokud nepotřebujeme záporné hodnoty můžeme použít datový typ 
 * DATETIME - datum s časem ve formátu YYYY-MM-DD hh:mm:ss
 
 **Hodnota NULL**
-* jestliže se ve soupci zaznamu nachází hodnota NULL, znamená to, že v něm nic není
+* jestliže se ve sloupci záznamu nachází hodnota NULL, znamená to, že v něm nic není
 * Tato hodnota znamená nezadáno nebo neznámo
 
 
-## Nozmalizace relačních databází
+## Normalizace relačních databází
 **Co to je?**
 * Postup popisující jak správně navrhnout a vytvořit strukturu databáze.
 * Databáze by měla vyhovovat tzv. normálním formám
 * Normální formy určují jak navrhnout tabulky, tak aby nedošlo k duplicitám a nekonzistentním datům.
 * Existuje několik normálních forem, běžně se vyžaduje dodržení alespoň prvních tří.
 
-**První normální forma**: Tabulka je v pvní normální formě, pokud každý její atribut obsahuje jen atomicke hodnoty
+**První normální forma**: Tabulka je v první normální formě, pokud každý její atribut obsahuje jen atomické hodnoty
 
-**Druhá normální forma**: Tabulka je v druhé normální formě, pokud splňuje podmínky první normální formy akaždý neklíčový atribut je plně závislý na celém primárním klíči(nejen na jeho části)
+**Druhá normální forma**: Tabulka je v druhé normální formě, pokud splňuje podmínky první normální formy a každý neklíčový atribut je plně závislý na celém primárním klíči(nejen na jeho části)
 
-**Třetí norální forma**: Tabulka se nachází v třetí normální formě, splňuje-li předchozí dvě normální formy a všechny neklíčové atributy jsou vzájemně nezávislé
+**Třetí normální forma**: Tabulka se nachází v třetí normální formě, splňuje-li předchozí dvě normální formy a všechny neklíčové atributy jsou vzájemně nezávislé
 
 
 ## Jazyk SQL
@@ -152,7 +153,7 @@ Standardy podporuje prakticky každá relační databáze, ale obvykle nejsou im
 
 **Příkazy pro definici dat**
 ```SQL
--- Vytvoreni tabulky
+-- Vytvoření tabulky
 	CREATE TABLE [dbo].[Uzivatele]
 	(
 	    [Id] INT NOT NULL PRIMARY KEY IDENTITY,
@@ -162,12 +163,12 @@ Standardy podporuje prakticky každá relační databáze, ale obvykle nejsou im
 	    [PocetClanku] INT NOT NULL
 	)
 
--- Smazani tabulky
+-- Smazání tabulky
 DROP TABLE [dbo].[Uzivatele]
 ```
 **Příkazy pro vkládání a mazání dat v tabulce**
 ```SQL
--- Vlozeni zaznamu do tabulky
+-- Vložení záznamu do tabulky
 	INSERT INTO [Uzivatele] (
 	        [Jmeno],
 	        [Prijmeni],
@@ -177,10 +178,10 @@ DROP TABLE [dbo].[Uzivatele]
 	'Jan', 'Novák', '1984-11-03', 17
 	);
 
--- Vymazani zaznamu
+-- Vymazání záznamu
   DELETE FROM [Uzivatele] WHERE [Id] = 2;
 
--- Editace zaznamu
+-- Editace záznamu
 	UPDATE [Uzivatele] 
 	SET [Prijmeni] = 'Dolejší', 
 		[PocetClanku] = [PocetClanku] + 1 
@@ -194,7 +195,7 @@ DROP TABLE [dbo].[Uzivatele]
 	WHERE Datum BETWEEN '2012-3-1' AND '2012-6-30'
 	ORDER BY Datum;
 
--- Výpis uživatelů, jejichž přezdívka začíná na určité písmeno (využívá se na webu pro procházení uživatelů
+-- Výpis uživatelů, jejichž přezdívka začíná na určité písmeno (využívá se na webu pro procházení uživatelů)
 	SELECT Nick, UzivatelID 
 	FROM Uzivatel
 	WHERE Nick LIKE 'D%';
